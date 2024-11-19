@@ -3,27 +3,29 @@
 
 <h3>Bar Chart Example</h3>
 
-    <ApexChart TItem="MyData" @ref="chartRef" Height="300"
-               Title="Sample Data">
+<ApexChart TItem="MyData" @ref="chartRef" Height="300"
+           Title="Sample Data">
 
-        <ApexPointSeries TItem="MyData"
-                         Items="Data"
-                         Name="Net Profit"
-                         SeriesType="SeriesType.Bar"
-                         XValue="e => e.Category"
-                         YValue="e=> e.NetProfit" />
+    <ApexPointSeries TItem="MyData"
+                     Items="Data"
+                     Name="Net Profit"
+                     SeriesType="SeriesType.Bar"
+                     XValue="e => e.Category"
+                     YValue="e=> e.NetProfit"/>
 
-        <ApexPointSeries TItem="MyData"
-                         Items="Data"
-                         Name="Revenue"
-                         SeriesType="SeriesType.Bar"
-                         XValue="e => e.Category"
-                         YValue="e=> e.Revenue" />
-    </ApexChart>
-    
+    <ApexPointSeries TItem="MyData"
+                     Items="Data"
+                     Name="Revenue"
+                     SeriesType="SeriesType.Bar"
+                     XValue="e => e.Category"
+                     YValue="e=> e.Revenue"/>
+</ApexChart>
+
+<button @onclick="Callback">click me</button>
+
 @code {
     private List<MyData> Data { get; set; } = new();
-        private ApexChart<MyData> chartRef ;
+    private ApexChart<MyData> chartRef;
 
     protected override void OnInitialized()
     {
@@ -32,10 +34,13 @@
         Data.Add(new MyData { Category = "Mar", NetProfit = 112, Revenue = 23 });
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender){
-        if(firstRender){
-           await chartRef.UpdateOptionsAsync(false, false, false);
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await chartRef.UpdateOptionsAsync(false, false, false);
         }
+
         await base.OnAfterRenderAsync(firstRender);
     }
 
@@ -45,4 +50,10 @@
         public int NetProfit { get; set; }
         public int Revenue { get; set; }
     }
+
+    private void Callback()
+    {
+        Console.WriteLine();
+    }
+
 }
