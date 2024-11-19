@@ -1,0 +1,136 @@
+@page "/manufacture-table"
+
+<PageTitle>Theo dõi sản xuất khu dệt</PageTitle>
+
+<div class="manufacture_main-content">
+    <div class="manufacture_main_content_header">
+        <h1 class="small_title">Ca1</h1>
+        <h1 class="big_title">Theo dõi sản xuất khu dệt</h1>
+    </div>
+
+    <div class="manufacture_table_datetime">
+        <p>@currentDateTime</p>
+        <p>Cập Nhật Dữ Liệu: 1 phút</p>
+    </div>
+
+    <div class="manufacture_table">
+        <MudTable Items="tableData" Hover="true" Striped="true" Bordered="true">
+            <HeaderContent>
+                <MudTh>Tên Sản Phẩm</MudTh>
+                <MudTh>Mã Sản Phẩm</MudTh>
+                <MudTh>KH Sản Xuất (m)</MudTh>
+                <MudTh>Mục Tiêu (m)</MudTh>
+                <MudTh>Thực Tế (m)</MudTh>
+                <MudTh>% Hoàn Thành</MudTh>
+                <MudTh>Chú Ý</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd @class="@GetRowColor(context)">
+                    @context.Name
+                </MudTd>
+                <MudTd>@context.Id</MudTd>
+                <MudTd>@context.KhSanXuat</MudTd>
+                <MudTd>@context.MucTieu</MudTd>
+                <MudTd>@context.ThucTe</MudTd>
+                <MudTd>@(CalculateCompletionPercentage(context))</MudTd>
+                <MudTd>@context.Note</MudTd>
+            </RowTemplate>
+        </MudTable>
+    </div>
+</div>
+
+@code {
+    // Dữ liệu mẫu cho bảng
+    private List<ManufactureItem> tableData = new List<ManufactureItem>
+    {
+        new ManufactureItem 
+        { 
+            Id = 1, 
+            Name = "Sản phẩm A", 
+            KhSanXuat = 500, 
+            MucTieu = 450, 
+            ThucTe = 400, 
+            Note = "sản xuất"
+        },
+        new ManufactureItem 
+        { 
+            Id = 2, 
+            Name = "Sản phẩm B", 
+            KhSanXuat = 600, 
+            MucTieu = 650, 
+            ThucTe = 650, 
+            Note = "Đã hoàn thành"
+        },
+        new ManufactureItem 
+        { 
+            Id = 3, 
+            Name = "Sản phẩm C", 
+            KhSanXuat = 700, 
+            MucTieu = 750, 
+            ThucTe = 700, 
+            Note = "Chưa hoàn thành"
+        }
+    };
+
+    private string CalculateCompletionPercentage(ManufactureItem item)
+    {
+        if (item.MucTieu == 0)
+        {
+            return "N/A"; 
+        }
+        
+        var completion = (double)item.ThucTe / item.MucTieu * 100;
+        return $"{completion:0.##}%";
+    }
+    private string GetRowColor(ManufactureItem item)
+    {
+        var completionPercentage = CalculateCompletionPercentage(item);
+        double completionValue = 0;
+
+        if (double.TryParse(completionPercentage.Replace("%", ""), out completionValue))
+        {
+            if (completionValue >= 90)
+            {
+                return "green-row"; 
+            }
+            else
+            {
+                return "yellow-row"; 
+            }
+        }
+
+        return string.Empty;
+    }
+    private string currentDateTime;
+
+    private Timer timer;
+
+    protected override void OnInitialized()
+    {
+        currentDateTime = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+
+        timer = new Timer(async _ => await UpdateDateTime(), null, 0, 1000);
+    }
+
+    private async Task UpdateDateTime()
+    {
+        currentDateTime = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        timer?.Dispose();
+    }
+
+    public class ManufactureItem
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double KhSanXuat { get; set; }
+        public double MucTieu { get; set; }
+        public double ThucTe { get; set; }
+        public string Note { get; set; }
+    }
+}
