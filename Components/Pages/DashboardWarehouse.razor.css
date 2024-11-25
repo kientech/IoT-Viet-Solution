@@ -1,0 +1,153 @@
+.dashboard_warehouse {
+    width: 100%;
+    background-color: #f1f5f9;
+    height: 100vh;
+}
+
+.dashboard_warehouse .dashboard_chart_top {
+    display: flex;
+    gap: 10px;
+    min-height: 40vh;
+}
+
+.dashboard_charts {
+    margin-top: 10px;
+}
+
+.chart_big_container {
+    width: 30%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.chart_big_container .chart_item {
+    margin: 8px 0;
+    width: 100%;
+    height: 280px;
+    background-color: #26b050;
+    border-radius: 10px;
+}
+
+.chart_small_container {
+    width: 70%;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.chart_small_container .chart_item {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.chart_small_container .chart_item .pie_chart {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: #26b050;
+}
+
+.chart_small_container h1 {
+    font-size: 16px;
+}
+
+.chart_small_container .legend {
+    margin-top: 16px;
+}
+
+.chart_small_container .legend h1 {
+    font-size: 22px;
+}
+
+.chart_small_container .chart_content h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.dashboard_chart_bottom {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.dashboard_chart_bottom .chart_item_left {
+    width: 52%;
+    min-height: 40vh;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.dashboard_chart_bottom .chart_item_right {
+    width: 48%;
+    min-height: 40vh;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.dashboard_chart_bottom .bar_title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.dashboard_chart_bottom .chart_item_left .bar_chart {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(187, 255, 187);
+    border-radius: 8px;
+}
+
+.dashboard_chart_bottom .chart_item_right .bar_chart {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(173, 251, 173);
+    border-radius: 8px;
+}
+
+.quality_contain {
+    background-color: #f3f4f6;
+    width: 100%;
+    height: 100vh;
+}
+
+.quality_contain_charts {
+    margin-top: 2px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.quality_contain_charts .quality_contain_chart {
+    width: 100%;
+    height: 45vh;
+    background-color: green;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.quality_contain_charts .quality_contain_chart .chart_item {
+    width: 100%;
+    height: 90%;
+    background-color: #c1ffd4;
+    border-radius: 10px;
+}
+
+.quality_contain_charts .quality_contain_chart .chart_title {
+    text-align: center;
+}
+
+.bar_chart_example {
+    width: 100%;
+    height: 100%;
+}

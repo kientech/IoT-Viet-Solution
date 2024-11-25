@@ -1,10 +1,18 @@
 @page "/dashboard-warehouse"
+@using BlazorAppIntro.Components.Layout
+@using Microsoft.AspNetCore.Components.Sections
+@layout MainLayout
+
+
+<PageTitle>
+    Dashboard Kho
+</PageTitle>
+
+<SectionContent SectionId="MainLayout.AppTitle">
+    <MudText Typo="Typo.h5">Dashboard Kho</MudText>
+</SectionContent>
 
 <div class="dashboard_warehouse">
-    <div class="product_view_header">
-        <h1 class="header_title">Dashboard Kho</h1>
-    </div>
-    
     <div class="dashboard_charts">
         <div class="dashboard_chart_top">
             <div class="chart_big_container">
@@ -96,7 +104,7 @@
             <div class="chart_item_right">
                 <h1 class="bar_title">Xuất Nhập Tuần Này - Kho TP</h1>
                 <div class="bar_chart">
-                    
+
                 </div>
             </div>
 

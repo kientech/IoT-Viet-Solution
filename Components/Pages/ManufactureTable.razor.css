@@ -1,0 +1,64 @@
+
+.manufacture_main-content {
+    background-color: #fff;
+    margin: 16px;
+}
+
+.manufacture_main_content_header {
+    background-color: #2716e1;
+    padding: 16px 32px;
+    height: 86px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.manufacture_table td {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.manufacture_table th {
+    text-align: center;
+    font-weight: 900;
+    font-size: 24px;
+}
+
+.manufacture_main_content_header .small_title {
+    font-size: 32px;
+    color: #fff;
+    margin-right: 64px;
+}
+
+.manufacture_main_content_header .big_title {
+    font-size: 42px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manufacture_table_datetime {
+    margin: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.manufacture_table_datetime p {
+    font-size: 24px;
+    color: #1b6ec2;
+}
+
+.green-row {
+    background-color: #28a745;
+    color: white;
+}
+
+.yellow-row {
+    background-color: #ffc107;
+    color: black;
+}
