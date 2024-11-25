@@ -13,6 +13,7 @@ public static class ApexChartExtension
             Chart = new Chart()
             {
                 FontFamily = "Roboto', 'Helvetica', 'Arial', 'sans-serif",
+                Background = "transparent",
             },
             Tooltip = new() { Intersect = false },
             PlotOptions = new PlotOptions(),
